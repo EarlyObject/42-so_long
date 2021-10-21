@@ -18,11 +18,12 @@ MLX_PATH = mlx
 MLX = libmlx.a
 MLX_LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-SRC = so_long.c clean_exit.c initialization.c key_management.c parse.c utils.c
+SRC = so_long.c clean_exit.c initialization.c key_management.c parse.c utils.c \
+	error_mngmt.c parse_checks.c graphics.c map_mngmt.c
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc
+CC = gcc -g -Imlx
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -30,13 +31,14 @@ RM = rm -f
 
 VPATH = src include
 
-all: $(NAME)
-
 $(NAME): $(OBJ)
-	@$(MAKE) -C $(MLX_PATH)
+	$(MAKE) -C $(MLX_PATH)
 	$(MAKE) -C $(LIBFT_PATH)
 	cp $(LIBFT_PATH)/libft.a $(LIBFT)
-	gcc $(CFLAGS) $(OBJ) $(MLX_LINK) $(LIBFT) -o $(NAME)
+	$(CC) -g3 $(CFLAGS) $(OBJ) $(MLX_LINK) $(LIBFT) -o $(NAME)
+
+
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJ)
@@ -44,7 +46,7 @@ clean:
 	make clean -C $(LIBFT_PATH)
 
 fclean: clean
-	$(RM) $(NAME) $(MLX) $(LIBFT)
+	$(RM) $(NAME) $(LIBFT) $(MLX)
 	make fclean -C $(LIBFT_PATH)
 
 re: fclean all

@@ -49,16 +49,50 @@ typedef struct s_image
 	int				img_height;
 }	t_image;
 
+typedef struct s_config //check necessity
+{
+	int				width;
+	int				height;
+	char			**map;
+	int				rows;
+	int				columns;
+	int				num_sprites;
+	size_t			max_len;
+	char			player_direction;
+	int				hit;
+	int				is_p;
+	int				is_e;
+	int				is_c;
+	void			*wall;
+	void			*space;
+	void			*player;
+	void			*collect;
+	void			*exit;
+	char			*path_wall;
+	char			*path_space;
+	char			*path_player;
+	char			*path_collect;
+	char			*path_exit;
+}	t_config;
+
 typedef struct s_game
 {
 	void			*win;
 	t_image			image;
 	t_mlx			mlx;
 	t_keys			keys;
+	t_config		*config;
 	t_d_list		*head;
 	t_d_list		*lst;
 	t_d_list		*tmp;
 }	t_game;
 
+enum		e_errors { //check necessity
+	ERR_ARGC_MIN = -15,
+	ERR_ARGC_MAX,
+	ERR_MAP_VALIDITY,
+	ERR_MAP_BAD_ARG,
+	ERR_MAP_OPEN,
+};
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: asydykna <asydykna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 14:02:04 by asydykna          #+#    #+#             */
-/*   Updated: 2021/10/18 18:06:59 by asydykna         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:03:13 by asydykna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void			perror_exit(void);
 int				get_next_line(int fd, char **line);
 void			free_mem(void **p);
 int				ft_endwith(char const *str, char const *end);
+void			ft_free_2d_arr(void **arr);
 
 #endif

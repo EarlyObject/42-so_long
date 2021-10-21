@@ -12,10 +12,29 @@
 
 #include "../include/so_long.h"
 
+void
+	free_list(t_d_list *list)
+{
+	t_d_list	*temp;
+
+	while (list)
+	{
+		temp = list->next;
+		free(list->content);
+		free(list);
+		list = temp;
+	}
+}
+
 int
 	exit_game(t_game *game, int code)
 {
 	clear_window(game);
+	ft_free_2d_arr((void **)game->config->map);
+	free(game->config);
+	free_list(game->head);
+	clear_textures(game);
+	free(game);
 	exit(code);
 }
 
@@ -32,18 +51,16 @@ int
 void
 	clear_textures(t_game *game)
 {
+	//залить текстуры в массив и очищать разом
 	printf("%d\n", game->image.bits_per_pixel);
-	/*int	i;
+	//int	i;
 
-	i = 0;
-	while (i < TEXTURES)
-	{
-		if (game->config->wallTexture[i] != NULL)
-			mlx_destroy_image(game->mlx.mlx,
-							  game->config->wallTexture[i]->img_ptr);
-		i++;
-	}
-	while (i < TEXTURES)
+	if (game->config->wall != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->wall);
+	if (game->config->player != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->player);
+
+	/*while (i < TEXTURES)
 	{
 		if (game->config->wallTexture[i] != NULL)
 			free(game->config->wallTexture[i]);

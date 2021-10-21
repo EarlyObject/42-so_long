@@ -18,24 +18,6 @@ void
 	system("leaks so_long");
 }
 
-void
-	ft_exit_error(t_game *game, char *msg, int err_num)
-{
-	perror("Error");
-	perror(msg);
-	exit_game(game, err_num);
-	exit(err_num);
-}
-
-void
-	build_frame(t_game *game)
-{
-	//draw_sprites(game);
-	mlx_put_image_to_window(
-			game->mlx.mlx, game->win, game->image.img_ptr, 0, 0);
-	mlx_do_sync(game->mlx.mlx);
-}
-
 int
 	main_loop(t_game *game)
 {
@@ -45,11 +27,10 @@ int
 		build_frame(game);
 		return (0);
 	}
-	move_player(game);
+//	move_player(game);
 	build_frame(game);
 	return (0);
 }
-
 
 void
 	ft_run(t_game game)
@@ -61,24 +42,33 @@ void
 	mlx_loop(game.mlx.mlx);
 }
 
-
 int
 	main(int argc, char *argv[])
 {
-	t_game	*game;
+	t_game game;
+
+	atexit(my_leaks);
 
 	if (argc < 2)
-		ft_exit_error(NULL, "No map provided", 0);
+		ft_put_error_exit("No map provided", 0);
 	else if (argc > 2)
 	{
-		perror("Warning");
-		perror(("More than 1 arguments provided. Only first will be used"));
+		ft_putendl_fd("Warning", 2);
+		ft_putendl_fd("Too many arguments. Only the first one will be used", 2);
 	}
-	game = (t_game *)malloc(sizeof(game));
-	initialize_game(game);
-	parse_args(game, argv[1]);
-	parse_map(open(argv[1], O_RDONLY), game);
-	ft_run(*game);
-	printf("This is %s\n", argv[0]);
+	//game = (t_game *)malloc(sizeof(t_game *));
+	initialize_game(&game);
+	parse_args(argv[1]);
+	read_map(open(argv[1], O_RDONLY), &game);
+	check_map_params(&game);
+	create_map(&game);
+	game.config->width = game.config->columns * TEXTURE_SIZE;
+	game.config->height = game.config->rows * TEXTURE_SIZE;
+	game.tmp = game.head;
+	game.lst = game.head;
+	init_keys(&game);
+	init_window(&game); //check return
+	load_textures(&game);
+	ft_run(game);
 	return (EXIT_SUCCESS);
 }

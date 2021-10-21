@@ -23,33 +23,45 @@ void
 	game->keys.right = 0;
 }
 
-int
-	init_window(t_game *game)
-{
-	void	*mlx;
-	void	*win;
 
-	mlx = mlx_init();
-	if (!mlx)
-		ft_exit_error(game, "MLX_INIT ERROR.", -1);//check
-	win = mlx_new_window(mlx, 100,
-						 100, "so_long");
-	if (!win)
-		ft_exit_error(game, "MLX_NEW_WINDOW ERROR.", -1);//check
-	game->mlx.mlx = mlx;
-	game->win = win;
-	game->image.img_ptr = mlx_new_image(mlx, 100,100);//check
-	if (!game->image.img_ptr)
-		ft_exit_error(game, "MLX IMAGE ERROR.", -1);//check
-	game->image.addr = (uint32_t *)mlx_get_data_addr(game->image.img_ptr,
-													 &game->image.bits_per_pixel, &game->image.line_length,
-													 &game->image.endian);
-	return (1);
-}
 
 void
 	initialize_game(t_game *game)
 {
-	init_keys(game);
-	init_window(game);
+	t_image		image;
+
+	image = (t_image){.img_ptr = NULL, .addr = NULL, .bits_per_pixel = 0, .line_length = 0, .endian = 0};
+	(*game).win = NULL;
+	(*game).image = image;
+
+	game->mlx.mlx = NULL;
+	game->mlx.window = NULL;
+	game->mlx.img = NULL;
+
+	game->head = NULL;
+	game->lst = NULL;
+	game->tmp = NULL;
+	game->config = (t_config *)malloc(sizeof(t_config));
+	game->config->width = 0; //
+	game->config->height = 0; // initialize with?
+	game->config->map = NULL;
+	game->config->rows = 0;
+	game->config->columns = 0;
+	game->config->num_sprites = 0;
+	game->config->max_len = 0;
+	game->config->player_direction = 0;
+	game->config->is_e = 0;
+	game->config->is_c = 0;
+	game->config->hit = 0;
+	game->config->wall = NULL;
+	game->config->space = NULL;
+	game->config->is_p = 0;
+	game->config->player = NULL;
+	game->config->collect = NULL;
+	game->config->exit = NULL;
+	game->config->path_wall = "./textures/wall.xpm";
+	game->config->path_space = "./textures/space.xpm";
+	game->config->path_player = "./textures/player.xpm";
+	game->config->path_collect = "./textures/collect.xpm";
+	game->config->path_exit = "./textures/exit.xpm";
 }

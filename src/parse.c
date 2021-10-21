@@ -13,20 +13,20 @@
 #include "../include/so_long.h"
 
 void
-	parse_args(t_game *game, char *filename)
+	parse_args(char *filename)
 {
 	int			fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_exit_error(game, "File can not be opened", -1);//apply correct closings
+		ft_put_error_exit("File can not be opened", 0);
 	close(fd);
-	if (!ft_endwith(filename, ".cub"))
-		ft_exit_error(game, "Wrong map extension", -1); //apply correct closings
+	if (!ft_endwith(filename, ".ber"))
+		ft_put_error_exit("Wrong map extension", 0);
 }
 
 void
-	parse_map(const int fd, t_game *game)
+	read_map(const int fd, t_game *game)
 {
 	int				bytes;
 
@@ -49,6 +49,27 @@ void
 	}
 	game->lst->len = ft_strlen(game->lst->content);
 	if (bytes == -1)
-		ft_exit_error(game, "ERROR READING MAP", -1); //apply correct exit
+		ft_exit_error(game, "Error reading map", -1); //apply correct exit
 	close(fd);
+}
+
+void
+	parse_map(t_game *game)
+{
+	game->tmp = game->lst;
+	check_rectangular(game);
+	check_map_bits(game);
+	game->tmp = game->head;
+	check_horizontal_border(game, game->tmp->content);
+	game->tmp = game->head;
+	int step;
+	step = game->config->rows - 1;
+	while (step)
+	{
+		game->tmp = game->tmp->next;
+		step--;
+	}
+	check_horizontal_border(game, game->tmp->content);
+	check_vertical_borders(game);
+	check_sign(game);
 }

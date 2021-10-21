@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_free_2d_arr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asydykna <asydykna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 18:42:35 by asydykna          #+#    #+#             */
-/*   Updated: 2021/10/18 18:42:36 by asydykna         ###   ########.fr       */
+/*   Created: 2021/10/21 13:00:40 by asydykna          #+#    #+#             */
+/*   Updated: 2021/10/21 13:11:25 by asydykna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
 void
-	check_mem_alloc(void *p)
+	ft_free_2d_arr(void **arr)
 {
-	if (p == NULL)
-		ft_put_error_exit("Memory is not allocated", 2 );
-}
+	int	i;
 
-t_d_list
-	*ft_my_lstnew(void *content, t_d_list **prev)
-{
-	t_d_list	*new;
-
-	new = malloc(sizeof(t_d_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	if (prev)
-		new->previous = *prev;
-	else
-		new->previous = NULL;
-	new->next = NULL;
-	return (new);
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
