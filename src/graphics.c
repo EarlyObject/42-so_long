@@ -34,17 +34,8 @@ int
 }
 
 void
-	draw_pixel(t_game *game, int x, int y, uint32_t color)
-{
-	if (x >= 0 && x < game->config->width
-		&& y >= 0 && y < game->config->height)
-		game->image.addr[(game->config->width * y) + x] = color;
-}
-
-void
 	build_frame(t_game *game)
 {
-	//draw_sprites(game);
 	int i;
 	int j;
 
@@ -93,4 +84,6 @@ void
 	game->config->player = mlx_xpm_file_to_image(game->mlx.mlx, game->config->path_player, &tile_width, &tile_height);
 	game->config->collect = mlx_xpm_file_to_image(game->mlx.mlx, game->config->path_collect, &tile_width, &tile_height);
 	game->config->exit = mlx_xpm_file_to_image(game->mlx.mlx, game->config->path_exit, &tile_width, &tile_height);
+	game->config->exit_open = mlx_xpm_file_to_image(game->mlx.mlx, game->config->path_exit_open, &tile_width, &tile_height);
+
 }

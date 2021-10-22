@@ -21,6 +21,8 @@ void
 int
 	main_loop(t_game *game)
 {
+	mlx_do_key_autorepeatoff(game->mlx.mlx);
+
 	if (!game->keys.w && !game->keys.s && !game->keys.a && \
 		!game->keys.d && !game->keys.right && !game->keys.left)
 	{
@@ -28,7 +30,9 @@ int
 		return (0);
 	}
 	move_player(game);
-	build_frame(game);
+	if (game->update_frame)
+		build_frame(game);
+	game->update_frame = false;
 	return (0);
 }
 
@@ -68,11 +72,6 @@ int
 	init_window(&game); //check return
 	load_textures(&game);
 	ft_run(game);
-
-/*	free_map(&game);
-	free(game.config);*/
-	//free_list(game.head);
-	printf("%d, %s", game.plr_y, argv[0]);
 
 	return (EXIT_SUCCESS);
 }

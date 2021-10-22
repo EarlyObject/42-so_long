@@ -15,10 +15,6 @@
 void
 	move_player(t_game *game)
 {
-	//game->image.addr = NULL;
-	//double	oldDirX;
-	//double	oldPlaneX;
-
 	if (game->keys.w)
 		move_up(game);
 	if (game->keys.s)
@@ -72,24 +68,3 @@ int
 {
 	exit(0);
 }
-
-/*
-void
-	move_backward(t_game *cub3d)
-{
-	*/
-/*int	mx_x;
-	int	mx_y;
-	int	my_x;
-	int	my_y;
-
-	mx_x = (int)(cub3d->plr.posX - cub3d->plr.dirX * MOVE_SPEED);
-	mx_y = (int)(cub3d->plr.posY);
-	my_x = (int)(cub3d->plr.posX);
-	my_y = (int)(cub3d->plr.posY - cub3d->plr.dirY * MOVE_SPEED);
-	if (cub3d->config->map[mx_x + mx_y * cub3d->config->max_len] != '1')
-		cub3d->plr.posX -= cub3d->plr.dirX * MOVE_SPEED;
-	if (cub3d->config->map[my_x + my_y * cub3d->config->max_len] != '1')
-		cub3d->plr.posY -= cub3d->plr.dirY * MOVE_SPEED;*//*
-
-}*/

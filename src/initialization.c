@@ -38,11 +38,14 @@ void
 	game->mlx.window = NULL;
 	game->mlx.img = NULL;
 
+	game->update_frame = true;
+
 	game->head = NULL;
 	game->lst = NULL;
 	game->tmp = NULL;
 	game->plr_x = 1;
 	game->plr_y = 1;
+	game->steps = 0;
 	game->config = (t_config *)malloc(sizeof(t_config));
 	game->config->width = 0; //
 	game->config->height = 0; // initialize with?
@@ -61,9 +64,11 @@ void
 	game->config->player = NULL;
 	game->config->collect = NULL;
 	game->config->exit = NULL;
+	game->config->exit_open = NULL;
 	game->config->path_wall = "./textures/wall.xpm";
 	game->config->path_space = "./textures/space.xpm";
 	game->config->path_player = "./textures/player.xpm";
 	game->config->path_collect = "./textures/collect.xpm";
 	game->config->path_exit = "./textures/exit.xpm";
+	game->config->path_exit_open = "./textures/exit_open.xpm";
 }

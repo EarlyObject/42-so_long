@@ -68,11 +68,13 @@ typedef struct s_config //check necessity
 	void			*player;
 	void			*collect;
 	void			*exit;
+	void			*exit_open;
 	char			*path_wall;
 	char			*path_space;
 	char			*path_player;
 	char			*path_collect;
 	char			*path_exit;
+	char 			*path_exit_open;
 }	t_config;
 
 typedef struct s_game
@@ -87,6 +89,8 @@ typedef struct s_game
 	t_d_list		*tmp;
 	int				plr_x;
 	int				plr_y;
+	unsigned int 	steps;
+	bool			update_frame;
 }	t_game;
 
 enum		e_errors { //check necessity

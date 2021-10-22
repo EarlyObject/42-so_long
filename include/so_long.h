@@ -57,7 +57,6 @@ void		check_sign(t_game *game);
 void		check_rectangular(t_game *game);
 void		ft_error_close(t_game *game, int error_code);
 bool		is_valid_map_bit(char c);
-void		draw_pixel(t_game *game, int x, int y, uint32_t color);
 void		build_frame(t_game *game);
 void		load_textures(t_game *game);
 void		parse_map(t_game *game);
