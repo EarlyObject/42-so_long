@@ -15,37 +15,25 @@
 void
 	move_player(t_game *game)
 {
-	game->image.addr = NULL;
+	//game->image.addr = NULL;
 	//double	oldDirX;
 	//double	oldPlaneX;
 
-	/*if (game->keys.left)
-	{
-		oldDirX = game->plr.dirX;
-		oldPlaneX = game->screen.planeX;
-		look_left(game, oldDirX, oldPlaneX);
-	}
-	if (game->keys.right)
-	{
-		oldDirX = game->plr.dirX;
-		oldPlaneX = game->screen.planeX;
-		look_right(game, oldDirX, oldPlaneX);
-	}
 	if (game->keys.w)
-		move_forward(game);
+		move_up(game);
 	if (game->keys.s)
-		move_backward(game);
+		move_down(game);
 	if (game->keys.a)
 		move_left(game);
 	if (game->keys.d)
-		move_right(game);*/
+		move_right(game);
 }
 
 int
 	deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
-		exit(0);
+		exit(0);//correct exit??
 	if (key_code == KEY_W)
 		game->keys.w = true;
 	if (key_code == KEY_S)
@@ -80,7 +68,7 @@ int
 }
 
 int
-	close_win(void)
+	close_win(void)//correct exit?
 {
 	exit(0);
 }

@@ -41,6 +41,8 @@ void
 	game->head = NULL;
 	game->lst = NULL;
 	game->tmp = NULL;
+	game->plr_x = 1;
+	game->plr_y = 1;
 	game->config = (t_config *)malloc(sizeof(t_config));
 	game->config->width = 0; //
 	game->config->height = 0; // initialize with?
@@ -50,12 +52,12 @@ void
 	game->config->num_sprites = 0;
 	game->config->max_len = 0;
 	game->config->player_direction = 0;
-	game->config->is_e = 0;
-	game->config->is_c = 0;
+	game->config->num_e = 0;
+	game->config->num_c = 0;
 	game->config->hit = 0;
 	game->config->wall = NULL;
 	game->config->space = NULL;
-	game->config->is_p = 0;
+	game->config->num_p = 0;
 	game->config->player = NULL;
 	game->config->collect = NULL;
 	game->config->exit = NULL;

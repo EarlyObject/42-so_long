@@ -19,7 +19,7 @@ MLX = libmlx.a
 MLX_LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 SRC = so_long.c clean_exit.c initialization.c key_management.c parse.c utils.c \
-	error_mngmt.c parse_checks.c graphics.c map_mngmt.c
+	error_mngmt.c parse_checks.c graphics.c map_mngmt.c player.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -42,12 +42,12 @@ all: $(NAME)
 
 clean:
 	$(RM) $(OBJ)
-	$(MAKE) clean -C $(MLX_PATH)
-	make clean -C $(LIBFT_PATH)
+	#$(MAKE) clean -C $(MLX_PATH)
+	#make clean -C $(LIBFT_PATH)
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT) $(MLX)
-	make fclean -C $(LIBFT_PATH)
+	#$(RM) $(NAME) $(LIBFT) $(MLX)
+	#make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 

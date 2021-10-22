@@ -76,18 +76,22 @@ void
 		while (column < game->config->columns - 1)
 		{
 			if (((char *)(game->tmp->content))[column] == 'P')
-				game->config->is_p += 1;
+			{
+				game->config->num_p += 1;
+				game->plr_x = column;
+				game->plr_y = row;
+			}
 			else if (((char *)(game->tmp->content))[column] == 'E')
-				game->config->is_e += 1;
+				game->config->num_e += 1;
 			else if (((char *)(game->tmp->content))[column] == 'C')
-				game->config->is_c += 1;
+				game->config->num_c += 1;
 			column++;
 		}
 		row++;
 		game->tmp = game->tmp->next;
 	}
-	if (!game->config->is_p || !game->config->is_e || !game->config->is_c
-		|| game->config->is_p > 1)
+	if (!game->config->num_p || !game->config->num_e || !game->config->num_c
+		|| game->config->num_p > 1)
 		ft_exit_error(game, "Map is invalid", -1);
 }
 

@@ -67,8 +67,7 @@ void
 	i = 0;
 	while (i < rows)
 	{
-		game->config->map[i] = game->lst->content;
-		game->config->map[i][game->config->columns] = '\0';
+		ft_strlcpy(game->config->map[i], game->lst->content, game->config->columns + 1);
 		i++;
 		game->lst = game->lst->next;
 	}

@@ -27,7 +27,7 @@ int
 		build_frame(game);
 		return (0);
 	}
-//	move_player(game);
+	move_player(game);
 	build_frame(game);
 	return (0);
 }
@@ -45,10 +45,9 @@ void
 int
 	main(int argc, char *argv[])
 {
-	t_game game;
+	t_game	game;
 
 	atexit(my_leaks);
-
 	if (argc < 2)
 		ft_put_error_exit("No map provided", 0);
 	else if (argc > 2)
@@ -56,7 +55,6 @@ int
 		ft_putendl_fd("Warning", 2);
 		ft_putendl_fd("Too many arguments. Only the first one will be used", 2);
 	}
-	//game = (t_game *)malloc(sizeof(t_game *));
 	initialize_game(&game);
 	parse_args(argv[1]);
 	read_map(open(argv[1], O_RDONLY), &game);
@@ -70,5 +68,11 @@ int
 	init_window(&game); //check return
 	load_textures(&game);
 	ft_run(game);
+
+/*	free_map(&game);
+	free(game.config);*/
+	//free_list(game.head);
+	printf("%d, %s", game.plr_y, argv[0]);
+
 	return (EXIT_SUCCESS);
 }

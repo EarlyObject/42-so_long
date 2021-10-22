@@ -63,6 +63,11 @@ void		load_textures(t_game *game);
 void		parse_map(t_game *game);
 void		check_map_params(t_game *game);
 void		create_map(t_game *game);
-
+void		move_left(t_game *game);
+void		move_right(t_game *game);
+void		move_up(t_game *game);
+void		move_down(t_game *game);
+void		free_list(t_d_list *list);
+void		free_map(t_game *game);
 
 #endif

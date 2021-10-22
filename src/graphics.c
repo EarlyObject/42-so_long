@@ -54,9 +54,18 @@ void
 		j = 0;
 		while (j < game->config->rows)
 		{
-			if (game->config->map[j][i] == '0')
-				mlx_put_image_to_window(game->mlx.mlx, game->win, game->config->space, i * TEXTURE_SIZE, j * TEXTURE_SIZE);
-			else if (game->config->map[j][i] == '1')
+			mlx_put_image_to_window(game->mlx.mlx, game->win, game->config->space, i * TEXTURE_SIZE, j * TEXTURE_SIZE);
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < game->config->columns)
+	{
+		j = 0;
+		while (j < game->config->rows)
+		{
+			if (game->config->map[j][i] == '1')
 				mlx_put_image_to_window(game->mlx.mlx, game->win, game->config->wall, i * TEXTURE_SIZE, j * TEXTURE_SIZE);
 			else if (game->config->map[j][i] == 'P')
 				mlx_put_image_to_window(game->mlx.mlx, game->win, game->config->player, i * TEXTURE_SIZE, j * TEXTURE_SIZE);

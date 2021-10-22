@@ -60,9 +60,9 @@ typedef struct s_config //check necessity
 	size_t			max_len;
 	char			player_direction;
 	int				hit;
-	int				is_p;
-	int				is_e;
-	int				is_c;
+	unsigned int	num_p;
+	unsigned int	num_e;
+	unsigned int	num_c;
 	void			*wall;
 	void			*space;
 	void			*player;
@@ -85,6 +85,8 @@ typedef struct s_game
 	t_d_list		*head;
 	t_d_list		*lst;
 	t_d_list		*tmp;
+	int				plr_x;
+	int				plr_y;
 }	t_game;
 
 enum		e_errors { //check necessity
