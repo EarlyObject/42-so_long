@@ -60,7 +60,6 @@ bool		is_valid_map_bit(char c);
 void		build_frame(t_game *game);
 void		load_textures(t_game *game);
 void		parse_map(t_game *game);
-void		check_map_params(t_game *game);
 void		create_map(t_game *game);
 void		move_left(t_game *game);
 void		move_right(t_game *game);
@@ -68,5 +67,12 @@ void		move_up(t_game *game);
 void		move_down(t_game *game);
 void		free_list(t_d_list *list);
 void		free_map(t_game *game);
+void		draw_player(t_game *game, int i, int j);
+void		draw_collect(t_game *game, int i, int j);
+void		draw_space(t_game *game);
+void		count_map_objects(t_game *game, int row, int column);
+void		print_steps(const t_game *game);
+void		finish_game(t_game *game);
+void		make_step(t_game *game, char next_step, int step_y, int step_x);
 
 #endif

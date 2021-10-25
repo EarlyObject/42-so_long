@@ -35,3 +35,11 @@ t_d_list
 	new->next = NULL;
 	return (new);
 }
+
+void
+	print_steps(const t_game *game)
+{
+	ft_putstr_fd("Steps: ", 1);
+	ft_putnbr_fd((int)game->steps, 1);
+	ft_putendl_fd("", 1);
+}

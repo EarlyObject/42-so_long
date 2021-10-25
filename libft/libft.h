@@ -18,7 +18,11 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2000
+#  define BUFFER_SIZE 1
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 256
 # endif
 
 typedef struct s_list
@@ -26,6 +30,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_gnl
+{
+	int			n;
+	char		*temp;
+}	t_gnl;
 
 int				ft_atoi(const char *str);
 int				ft_atoi_modf(const char *str);

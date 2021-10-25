@@ -66,15 +66,27 @@ typedef struct s_config //check necessity
 	void			*wall;
 	void			*space;
 	void			*player;
+	void			*player_f;
+	void			*player_b;
+	void			*player_l;
+	void			*player_r;
 	void			*collect;
+	void			*collect1;
+	void			*collect2;
+	void			*collect3;
 	void			*exit;
 	void			*exit_open;
 	char			*path_wall;
 	char			*path_space;
-	char			*path_player;
-	char			*path_collect;
+	char			*path_player_f;
+	char			*path_player_b;
+	char			*path_player_l;
+	char			*path_player_r;
+	char			*path_collect1;
+	char			*path_collect2;
+	char			*path_collect3;
 	char			*path_exit;
-	char 			*path_exit_open;
+	char			*path_exit_open;
 }	t_config;
 
 typedef struct s_game
@@ -89,7 +101,7 @@ typedef struct s_game
 	t_d_list		*tmp;
 	int				plr_x;
 	int				plr_y;
-	unsigned int 	steps;
+	unsigned int	steps;
 	bool			update_frame;
 }	t_game;
 

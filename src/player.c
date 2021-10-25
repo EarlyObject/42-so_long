@@ -13,20 +13,16 @@
 #include "../include/so_long.h"
 
 void
-	print_steps(const t_game *game)
+	change_plr_position(t_game *game, int step_y, int step_x)
 {
-	ft_putstr_fd("Steps: ", 1);
-	ft_putnbr_fd(game->steps, 1);
-	ft_putendl_fd("", 1);
-}
-
-void
-	finish_game(t_game *game)
-{
-	game->config->map[game->plr_y][game->plr_x] = '0';
-	print_steps(game);
-	build_frame(game);
-	exit_game(game, EXIT_SUCCESS);
+	if (step_x < game->plr_x)
+		game->plr_x -= 1;
+	else if (step_x > game->plr_x)
+		game->plr_x += 1;
+	else if (step_y < game->plr_y)
+		game->plr_y -= 1;
+	else if (step_y > game->plr_y)
+		game->plr_y += 1;
 }
 
 void
@@ -42,14 +38,7 @@ void
 		}
 		game->config->map[game->plr_y][game->plr_x] = '0';
 		game->config->map[step_y][step_x] = 'P';
-		if (step_x < game->plr_x)
-			game->plr_x -= 1;
-		else if (step_x > game->plr_x)
-			game->plr_x += 1;
-		else if (step_y < game->plr_y)
-			game->plr_y -= 1;
-		else if (step_y > game->plr_y)
-			game->plr_y += 1;
+		change_plr_position(game, step_y, step_x);
 		game->steps += 1;
 		print_steps(game);
 		game->update_frame = true;
@@ -65,54 +54,10 @@ void
 }
 
 void
-	move_left(t_game *game)
+	finish_game(t_game *game)
 {
-	char	next_step;
-
-	next_step = game->config->map[game->plr_y][game->plr_x - 1];
-	if (next_step != '1')
-	{
-		make_step(game, next_step, game->plr_y, game->plr_x - 1);
-	}
-	game->keys.a = false;
-}
-
-void
-	move_right(t_game *game)
-{
-	char	next_step;
-
-	next_step = game->config->map[game->plr_y][game->plr_x + 1];
-	if (next_step != '1')
-	{
-		make_step(game, next_step, game->plr_y, game->plr_x + 1);
-	}
-	game->keys.d = false;
-}
-
-void
-	move_up(t_game *game)
-{
-	char	next_step;
-
-	next_step = game->config->map[game->plr_y - 1][game->plr_x];
-	if (next_step != '1')
-	{
-		make_step(game, next_step, game->plr_y - 1, game->plr_x);
-	}
-	game->keys.w = false;
-
-}
-
-void
-	move_down(t_game *game)
-{
-	char	next_step;
-
-	next_step = game->config->map[game->plr_y + 1][game->plr_x];
-	if (next_step != '1')
-	{
-		make_step(game, next_step, game->plr_y + 1, game->plr_x);
-	}
-	game->keys.s = false;
+	game->config->map[game->plr_y][game->plr_x] = '0';
+	print_steps(game);
+	build_frame(game);
+	exit_game(game, EXIT_SUCCESS);
 }

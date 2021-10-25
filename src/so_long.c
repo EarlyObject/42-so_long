@@ -21,8 +21,6 @@ void
 int
 	main_loop(t_game *game)
 {
-	mlx_do_key_autorepeatoff(game->mlx.mlx);
-
 	if (!game->keys.w && !game->keys.s && !game->keys.a && \
 		!game->keys.d && !game->keys.right && !game->keys.left)
 	{
@@ -62,16 +60,13 @@ int
 	initialize_game(&game);
 	parse_args(argv[1]);
 	read_map(open(argv[1], O_RDONLY), &game);
-	check_map_params(&game);
+	parse_map(&game);
 	create_map(&game);
-	game.config->width = game.config->columns * TEXTURE_SIZE;
-	game.config->height = game.config->rows * TEXTURE_SIZE;
 	game.tmp = game.head;
 	game.lst = game.head;
 	init_keys(&game);
-	init_window(&game); //check return
+	init_window(&game);
 	load_textures(&game);
 	ft_run(game);
-
 	return (EXIT_SUCCESS);
 }

@@ -19,55 +19,27 @@ bool
 }
 
 void
-	check_line_content(char *str, t_game *game, bool *is_map_started)
-{
-	if (!(*str) && !(*is_map_started))
-		return ;
-	else if (!(*str) && *is_map_started)
-		ft_error_close(game, ERR_MAP_VALIDITY);
-	if (!(*is_map_started) && (*str == '1'))
-	{
-		*is_map_started = 1;
-		parse_map(game);
-	}
-	else
-		ft_error_close(game, ERR_MAP_VALIDITY);
-}
-
-void
-	check_map_params(t_game *game)
-{
-	bool		map_started_flag;
-
-	map_started_flag = 0;
-	game->lst = game->head;
-	while (game->lst->next != NULL && !map_started_flag)
-	{
-		check_line_content(game->lst->content, game, &map_started_flag);
-		if (!map_started_flag)
-			game->lst = game->lst->next;
-	}
-}
-
-void
 	create_map(t_game *game)
 {
 	int	i;
 	int	rows;
 
-	check_mem_alloc(game->config->map = (char **)malloc(game->config->rows * (sizeof(char *))));
+	check_mem_alloc(game->config->map = (char **)malloc(
+			game->config->rows * (sizeof(char *))));
 	i = 0;
 	rows = game->config->rows;
 	while (i < rows)
 	{
-		check_mem_alloc(game->config->map[i] = (char *)malloc((game->config->columns + 1) * sizeof(char)));
+		check_mem_alloc(game->config->map[i] = (char *)malloc(
+				(game->config->columns + 1) * sizeof(char)));
 		i++;
 	}
 	game->lst = game->head;
 	i = 0;
 	while (i < rows)
 	{
-		ft_strlcpy(game->config->map[i], game->lst->content, game->config->columns + 1);
+		ft_strlcpy(game->config->map[i], game->lst->content,
+			game->config->columns + 1);
 		i++;
 		game->lst = game->lst->next;
 	}

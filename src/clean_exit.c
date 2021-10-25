@@ -64,24 +64,24 @@ int
 void
 	clear_textures(t_game *game)
 {
-	//залить текстуры в массив и очищать разом
-	//int	i;
-
 	if (game->config->wall != NULL)
 		mlx_destroy_image(game->mlx.mlx, game->config->wall);
 	if (game->config->space != NULL)
 		mlx_destroy_image(game->mlx.mlx, game->config->space);
-	if (game->config->player != NULL)
-		mlx_destroy_image(game->mlx.mlx, game->config->player);
-	if (game->config->collect != NULL)
-		mlx_destroy_image(game->mlx.mlx, game->config->collect);
+	if (game->config->player_f != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->player_f);
+	if (game->config->player_b != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->player_b);
+	if (game->config->player_l != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->player_l);
+	if (game->config->player_r != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->player_r);
+	if (game->config->collect1 != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->collect1);
+	if (game->config->collect2 != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->collect2);
+	if (game->config->collect3 != NULL)
+		mlx_destroy_image(game->mlx.mlx, game->config->collect3);
 	if (game->config->exit != NULL)
 		mlx_destroy_image(game->mlx.mlx, game->config->exit);
-
-	/*while (i < TEXTURES)
-	{
-		if (game->config->wallTexture[i] != NULL)
-			free(game->config->wallTexture[i]);
-		i++;
-	}*/
 }

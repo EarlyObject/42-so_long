@@ -28,7 +28,7 @@ void
 		i = 0;
 		game->tmp = game->tmp->next;
 	}
-	while (is_valid_map_bit(((char *)(game->tmp->content))[i])) //смысл повтора?
+	while (is_valid_map_bit(((char *)(game->tmp->content))[i]))
 		i++;
 	if ((((char *)(game->tmp->content))[i]) != '\0')
 		ft_error_close(game, ERR_MAP_VALIDITY);
@@ -73,20 +73,7 @@ void
 	while (row < game->config->rows - 1)
 	{
 		column = 1;
-		while (column < game->config->columns - 1)
-		{
-			if (((char *)(game->tmp->content))[column] == 'P')
-			{
-				game->config->num_p += 1;
-				game->plr_x = column;
-				game->plr_y = row;
-			}
-			else if (((char *)(game->tmp->content))[column] == 'E')
-				game->config->num_e += 1;
-			else if (((char *)(game->tmp->content))[column] == 'C')
-				game->config->num_c += 1;
-			column++;
-		}
+		count_map_objects(game, row, column);
 		row++;
 		game->tmp = game->tmp->next;
 	}

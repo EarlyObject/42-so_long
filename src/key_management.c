@@ -29,7 +29,7 @@ int
 	deal_key(int key_code, t_game *game)
 {
 	if (key_code == KEY_ESC)
-		exit(0);//correct exit??
+		exit(0);
 	if (key_code == KEY_W)
 		game->keys.w = true;
 	if (key_code == KEY_S)
@@ -64,7 +64,7 @@ int
 }
 
 int
-	close_win(void)//correct exit?
+	close_win(void)
 {
 	exit(0);
 }

@@ -19,7 +19,6 @@
 **	islower(3) is true.
 */
 
-
 int
 	ft_isalpha(int c)
 {

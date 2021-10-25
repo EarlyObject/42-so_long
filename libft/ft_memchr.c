@@ -19,7 +19,6 @@
 **	unsigned char) in string s.
 */
 
-
 #include "libft.h"
 
 void

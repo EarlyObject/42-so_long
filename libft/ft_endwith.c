@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int //add to libft
+int
 	ft_endwith(char const *str, char const *end)
 {
 	int	length;
