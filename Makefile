@@ -18,7 +18,7 @@ MLX_PATH = mlx
 MLX = libmlx.a
 MLX_LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-SRC = so_long.c clean_exit.c initialization.c key_management.c parse.c utils.c \
+SRC = so_long.c initialization.c key_management.c parse.c utils.c \
 	error_mngmt.c parse_checks.c graphics.c map_mngmt.c player.c draw.c moves.c
 
 OBJ = $(SRC:.c=.o)

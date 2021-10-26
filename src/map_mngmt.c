@@ -44,5 +44,5 @@ void
 		game->lst = game->lst->next;
 	}
 	if (game->lst)
-		ft_put_error_exit("Error in map calculus", -1);
+		ft_exit_error("Error in map calculus", 0);
 }

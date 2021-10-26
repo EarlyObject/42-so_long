@@ -24,18 +24,18 @@ void
 		while (is_valid_map_bit(((char *)(game->tmp->content))[i]))
 			i++;
 		if ((((char *)(game->tmp->content))[i]) != '\0')
-			ft_error_close(game, ERR_MAP_VALIDITY);
+			ft_error_close(ERR_MAP_VALIDITY);
 		i = 0;
 		game->tmp = game->tmp->next;
 	}
 	while (is_valid_map_bit(((char *)(game->tmp->content))[i]))
 		i++;
 	if ((((char *)(game->tmp->content))[i]) != '\0')
-		ft_error_close(game, ERR_MAP_VALIDITY);
+		ft_error_close(ERR_MAP_VALIDITY);
 }
 
 void
-	check_horizontal_border(t_game *game, const char *str)
+	check_horizontal_border(const char *str)
 {
 	int			i;
 
@@ -43,7 +43,7 @@ void
 	while (str[i])
 	{
 		if (str[i] != '1')
-			ft_error_close(game, ERR_MAP_OPEN);
+			ft_error_close(ERR_MAP_OPEN);
 		i++;
 	}
 }
@@ -56,7 +56,7 @@ void
 	{
 		if (((char *)(game->tmp->content))[0] != '1' || \
 			((char *)(game->tmp->content))[game->tmp->len - 1] != '1')
-			ft_error_close(game, ERR_MAP_OPEN);
+			ft_error_close(ERR_MAP_OPEN);
 		game->tmp = game->tmp->next;
 	}
 	game->tmp = game->lst;
@@ -79,7 +79,7 @@ void
 	}
 	if (!game->config->num_p || !game->config->num_e || !game->config->num_c
 		|| game->config->num_p > 1)
-		ft_exit_error(game, "Map is invalid", -1);
+		ft_exit_error("Map is invalid", 0);
 }
 
 void
@@ -102,7 +102,7 @@ void
 		while ((((char *)(game->tmp->content))[i]) != '\0')
 			i++;
 		if (i != columns)
-			ft_error_close(game, ERR_MAP_VALIDITY);
+			ft_error_close(ERR_MAP_VALIDITY);
 		rows++;
 		game->tmp = game->tmp->next;
 	}

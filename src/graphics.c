@@ -17,15 +17,15 @@ int
 {
 	game->mlx.mlx = mlx_init();
 	if (!game->mlx.mlx)
-		ft_exit_error(game, "MLX_INIT ERROR.", -1);
+		ft_exit_error("MLX_INIT ERROR.", -1);
 	game->win = mlx_new_window(game->mlx.mlx, game->config->columns
 			* TEXTURE_SIZE, game->config->rows * TEXTURE_SIZE, "so_long");
 	if (!game->win)
-		ft_exit_error(game, "MLX_NEW_WINDOW ERROR.", -1);
+		ft_exit_error("MLX_NEW_WINDOW ERROR.", -1);
 	game->image.img_ptr = mlx_new_image(game->mlx.mlx, game->config->columns
 			* TEXTURE_SIZE, game->config->rows * TEXTURE_SIZE);
 	if (!game->image.img_ptr)
-		ft_exit_error(game, "MLX IMAGE ERROR.", -1);
+		ft_exit_error("MLX IMAGE ERROR.", -1);
 	game->image.addr = (uint32_t *)mlx_get_data_addr(game->image.img_ptr,
 			&game->image.bits_per_pixel, &game->image.line_length,
 			&game->image.endian);

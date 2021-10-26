@@ -101,10 +101,7 @@ typedef struct s_game
 }	t_game;
 
 enum		e_errors {
-	ERR_ARGC_MIN = -15,
-	ERR_ARGC_MAX,
 	ERR_MAP_VALIDITY,
-	ERR_MAP_BAD_ARG,
 	ERR_MAP_OPEN,
 };
 

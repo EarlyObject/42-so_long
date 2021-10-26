@@ -19,10 +19,10 @@ void
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_put_error_exit("File can not be opened", 0);
+		ft_exit_error("File can not be opened", 0);
 	close(fd);
 	if (!ft_endwith(filename, ".ber"))
-		ft_put_error_exit("Wrong map extension", 0);
+		ft_exit_error("Wrong map extension", 0);
 }
 
 void
@@ -49,7 +49,7 @@ void
 	}
 	game->lst->len = (int)ft_strlen(game->lst->content);
 	if (bytes == -1)
-		ft_exit_error(game, "Error reading map", -1);
+		ft_exit_error("Error reading map", -1);
 	close(fd);
 }
 
@@ -62,7 +62,7 @@ void
 	check_rectangular(game);
 	check_map_bits(game);
 	game->tmp = game->head;
-	check_horizontal_border(game, game->tmp->content);
+	check_horizontal_border(game->tmp->content);
 	game->tmp = game->head;
 	step = game->config->rows - 1;
 	while (step)
@@ -70,7 +70,7 @@ void
 		game->tmp = game->tmp->next;
 		step--;
 	}
-	check_horizontal_border(game, game->tmp->content);
+	check_horizontal_border(game->tmp->content);
 	check_vertical_borders(game);
 	check_sign(game);
 }

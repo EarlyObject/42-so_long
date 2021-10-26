@@ -50,7 +50,7 @@ int
 	t_game	game;
 
 	if (argc < 2)
-		ft_put_error_exit("No map provided", 0);
+		ft_exit_error("No map provided", 0);
 	else if (argc > 2)
 	{
 		ft_putendl_fd("Warning", 2);

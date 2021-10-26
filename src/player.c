@@ -59,5 +59,5 @@ void
 	game->config->map[game->plr_y][game->plr_x] = '0';
 	print_steps(game);
 	build_frame(game);
-	exit_game(game, EXIT_SUCCESS);
+	exit_game(EXIT_SUCCESS);
 }

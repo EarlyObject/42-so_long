@@ -16,7 +16,7 @@ void
 	check_mem_alloc(void *p)
 {
 	if (p == NULL)
-		ft_put_error_exit("Memory is not allocated", 2 );
+		ft_exit_error("Memory is not allocated", 2 );
 }
 
 t_d_list
