@@ -49,17 +49,12 @@ typedef struct s_image
 	int				img_height;
 }	t_image;
 
-typedef struct s_config //check necessity
+typedef struct s_config
 {
-	int				width;
-	int				height;
 	char			**map;
 	int				rows;
 	int				columns;
-	int				num_sprites;
-	size_t			max_len;
 	char			player_direction;
-	int				hit;
 	unsigned int	num_p;
 	unsigned int	num_e;
 	unsigned int	num_c;
@@ -105,7 +100,7 @@ typedef struct s_game
 	bool			update_frame;
 }	t_game;
 
-enum		e_errors { //check necessity
+enum		e_errors {
 	ERR_ARGC_MIN = -15,
 	ERR_ARGC_MAX,
 	ERR_MAP_VALIDITY,

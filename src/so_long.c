@@ -49,7 +49,6 @@ int
 {
 	t_game	game;
 
-	atexit(my_leaks);
 	if (argc < 2)
 		ft_put_error_exit("No map provided", 0);
 	else if (argc > 2)

@@ -57,12 +57,9 @@ void
 	game->config->map = NULL;
 	game->config->rows = 0;
 	game->config->columns = 0;
-	game->config->num_sprites = 0;
-	game->config->max_len = 0;
 	game->config->player_direction = 0;
 	game->config->num_e = 0;
 	game->config->num_c = 0;
-	game->config->hit = 0;
 	game->config->wall = NULL;
 	game->config->space = NULL;
 	game->config->num_p = 0;
